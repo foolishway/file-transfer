@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"fmt"
 	"io"
 	"log"
 	"net"
@@ -47,11 +46,13 @@ func downloadHandler(conn net.Conn) {
 	}
 
 	newName = newName + "_" + fileName
-	uploadPath := fmt.Sprintf("./upload_files/%s", newName)
+	uploadPath := filepath.Join("upload_files", newName)
 
 	dir := filepath.Dir(uploadPath)
 	err := os.MkdirAll(dir, 0755)
 	if err != nil {
+		log.Printf("Create %q error %v", "upload_files", err)
+		return
 	}
 
 	f, err := os.Create(uploadPath)

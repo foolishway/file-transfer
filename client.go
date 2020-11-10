@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	serverAddr = ":62188"
+	serverAddr = "10.26.235.42:65345"
 )
 
 type uploader struct {
