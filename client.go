@@ -13,7 +13,6 @@ import (
 )
 
 const (
-	filePath   = "./testData"
 	serverAddr = ":62188"
 )
 
