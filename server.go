@@ -46,7 +46,7 @@ func downloadHandler(conn net.Conn) {
 	}
 
 	newName = newName + "_" + fileName
-	uploadPath := filepath.Join("upload_files", newName)
+	uploadPath := filepath.Join("./upload_files", newName)
 
 	dir := filepath.Dir(uploadPath)
 	err := os.MkdirAll(dir, 0755)

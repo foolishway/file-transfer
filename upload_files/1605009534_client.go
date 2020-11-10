@@ -12,6 +12,10 @@ import (
 	"sync"
 )
 
+const (
+	serverAddr = "10.26.235.42:65345"
+)
+
 type uploader struct {
 	filePath   string
 	size       int64
@@ -29,10 +33,10 @@ func (c *uploader) upload() {
 		panic(fmt.Sprintf("Open file error %v", err))
 	}
 
-	conn, err := net.Dial("tcp", c.serverAddr)
+	conn, err := net.Dial("tcp", serverAddr)
 	// defer conn.Close()
 	if err != nil {
-		panic(fmt.Sprintf("Dial %s error %v", c.serverAddr, err))
+		panic(fmt.Sprintf("Dial %s error %v", serverAddr, err))
 	}
 
 	fLine := fmt.Sprintf("UPLOAD_FILE %s\n", filepath.Base(c.filePath))
