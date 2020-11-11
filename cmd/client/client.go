@@ -32,9 +32,10 @@ func main() {
 		files = flag.Args()
 	}
 
+	done := make(chan struct{}, 0)
 	//progress
 	progress := upload.NewProgress(files)
-	go progress.Start()
+	go progress.Start(done)
 
 	var wg *sync.WaitGroup = &sync.WaitGroup{}
 	for _, filePath := range files {
@@ -46,5 +47,6 @@ func main() {
 	}
 	wg.Wait()
 	close(progress.Event)
+	<-done
 	log.Println("All files upload completed.")
 }
