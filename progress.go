@@ -40,7 +40,7 @@ func (p *Progress) render() {
 		p.rendered = true
 	}
 	keys := make([]string, 0)
-	for fileName, _ := range p.progress {
+	for fileName := range p.progress {
 		keys = append(keys, fileName)
 	}
 	sort.Strings(keys)

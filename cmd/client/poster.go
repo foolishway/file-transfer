@@ -4,6 +4,7 @@ import (
 	"flag"
 	"io/ioutil"
 	"log"
+	"path/filepath"
 	"sync"
 
 	upload "github.com/foolishway/go-multiupload"
@@ -26,7 +27,7 @@ func main() {
 			if files == nil {
 				files = make([]string, 0)
 			}
-			files = append(files, "./testdata/"+fi.Name())
+			files = append(files, filepath.Join("testdata", fi.Name()))
 		}
 	} else {
 		files = flag.Args()
