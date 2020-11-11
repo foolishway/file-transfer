@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"sync"
+	"time"
 )
 
 type Uploader struct {
@@ -55,6 +56,7 @@ type uploaderWapper struct {
 
 func (w *uploaderWapper) Read(b []byte) (readed int, err error) {
 	if readed, err = w.reader.Read(b); err == nil {
+		time.Sleep(50 * time.Millisecond)
 		w.uploaded += int64(readed)
 		w.Progress.Event <- Event{fileName: w.fileName, uploaded: w.uploaded, total: w.size}
 	}
