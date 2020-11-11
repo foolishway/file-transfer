@@ -21,12 +21,12 @@ func main() {
 	var files []string
 	if flag.NArg() == 0 {
 		// panic("Files to upload is requred.")
-		finfo, _ := ioutil.ReadDir("./testData")
+		finfo, _ := ioutil.ReadDir("./testdata")
 		for _, fi := range finfo {
 			if files == nil {
 				files = make([]string, 0)
 			}
-			files = append(files, "./testData/"+fi.Name())
+			files = append(files, "./testdata/"+fi.Name())
 		}
 	} else {
 		files = flag.Args()
